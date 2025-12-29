@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mieles de Yakka</title>
+    <!-- Tailwind CSS (Estilos) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- QR Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #fdfbf7;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        .honey-gradient {
+            background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+        }
+        /* Fix para altura en móviles (evita que la barra de url tape contenido) */
+        .mobile-h-screen {
+            min-height: 100vh; /* Fallback */
+            min-height: 100dvh;
+        }
+    </style>
+</head>
+<body class="mobile-h-screen flex items-center justify-center p-4">
+
+    <div class="w-full max-w-sm bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col">
+        
+        <!-- Sección Superior: Imagen/Producto -->
+        <div class="relative bg-yellow-50 p-6 flex flex-col items-center text-center pb-8">
+            <!-- Fondo decorativo -->
+            <div class="absolute top-[-20px] left-[-20px] w-32 h-32 bg-yellow-200 rounded-full opacity-40 blur-xl"></div>
+            
+            <!-- Icono Central -->
+            <div class="relative z-10 mb-3 bg-white p-4 rounded-full shadow-md border-4 border-yellow-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                </svg>
+            </div>
+
+            <h2 class="text-2xl font-bold text-amber-900 leading-tight">Mieles de Yakka</h2>
+            <h3 class="text-md italic text-amber-700 mb-2">by Juanjo Moreno</h3>
+            <p class="text-xs text-gray-500 max-w-[200px]">Monodosis de miel cruda. Edición especial.</p>
+        </div>
+
+        <!-- Sección Inferior: QR y Botón -->
+        <div class="bg-white p-6 flex flex-col items-center -mt-6 rounded-t-3xl relative z-20 shadow-[0_-5px_15px_rgba(0,0,0,0.05)]">
+            
+            <!-- Título QR -->
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Escanea o Pulsa</p>
+
+            <!-- QR Code -->
+            <div class="bg-white p-2 border border-gray-100 rounded-lg shadow-sm mb-5">
+                <canvas id="qr-code"></canvas>
+            </div>
+
+            <!-- Botón Grande -->
+            <a href="https://mielesdeyakka.es/producto/monodosis-de-miel-cruda-edicion-especial-by-juanjo-moreno/" target="_blank" class="w-full">
+                <button class="w-full honey-gradient text-white font-bold py-4 rounded-xl shadow-lg active:scale-95 transition-transform flex items-center justify-center gap-2">
+                    <span>Comprar Ahora</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </button>
+            </a>
+            
+            <p class="mt-4 text-[10px] text-gray-400">Enlace seguro a mielesdeyakka.es</p>
+        </div>
+    </div>
+
+    <script>
+        const productUrl = "https://mielesdeyakka.es/producto/monodosis-de-miel-cruda-edicion-especial-by-juanjo-moreno/";
+
+        // Generar QR optimizado para tamaño móvil
+        const qr = new QRious({
+            element: document.getElementById('qr-code'),
+            value: productUrl,
+            size: 150, // Tamaño ajustado para pantallas pequeñas
+            background: 'white',
+            foreground: '#000000',
+            level: 'H'
+        });
+    </script>
+</body>
+</html>
